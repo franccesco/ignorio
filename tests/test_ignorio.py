@@ -12,7 +12,7 @@ ig = Ignorio()
 
 def test_version():
     """Test correct version number."""
-    assert __version__ == '0.1.0'
+    assert __version__ == '0.2.0'
 
 
 def test_language_list():
