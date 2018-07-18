@@ -11,3 +11,5 @@ requests = "^2.19"
 [tool.poetry.dev-dependencies]
 pytest = "^3.0"
 pudb = "^2018.1"
+coverage = "^4.5"
+coveralls = "^1.3"
