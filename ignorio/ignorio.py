@@ -15,13 +15,13 @@ class Ignorio():
         supported_languages()
         >>> [ruby, python, sublimetext, ...]
         """
-        lang_list = rget('https://www.gitignore.io/api/list').text
+        raw_list = rget('https://www.gitignore.io/api/list').text
 
         # gitignore.io's API returns a multiline string
         # I have to remove new lines and split the languages.
-        lang_list = lang_list.strip('\n')
-        lang_list = lang_list.replace('\n', ',')
-        lang_list = lang_list.split(',')
+        striped_list = raw_list.strip('\n')
+        replaced_list = striped_list.replace('\n', ',')
+        lang_list = replaced_list.split(',')
 
         return lang_list
 
@@ -34,10 +34,14 @@ class Ignorio():
         lang_list = self.supported_languages()
         return True if lang in lang_list else False
 
-    def get_language(self, lang):
-        """TODO: Get language exclusion list."""
-        pass
+    def get_language_exclusion(self, langs):
+        """Get languages exclusion list."""
+        lang_list = ','.join(langs)
+        exclusion_list = rget(f'https://www.gitignore.io/api/{lang_list}').text
+        return exclusion_list
 
-    def write_gitignore(self, path='.'):
-        """TODO: Write .gitignore."""
-        pass
+    def write_gitignore(self, langs, filename='.gitignore'):
+        """Write .gitignore."""
+        lang_list = self.get_language_exclusion(langs)
+        with open(filename, 'w') as raw:
+            raw.write(lang_list)
