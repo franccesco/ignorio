@@ -1,4 +1,4 @@
-"""TODO: Command Line Interface."""
+"""Command Line Interface for Ignorio."""
 import os
 import click
 from ignorio import Ignorio

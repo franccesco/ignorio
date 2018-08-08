@@ -1,4 +1,4 @@
-"""TODO: package description."""
+"""Package containing CLI and Ignorio class."""
 from .ignorio import Ignorio
 
 __all__ = ['Ignorio']

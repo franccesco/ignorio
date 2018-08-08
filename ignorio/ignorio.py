@@ -1,14 +1,28 @@
-"""TODO: Ignorio package description."""
+"""Manage .gitignore with Ignorio."""
 from requests import get as rget
 
 
 class Ignorio():
-    """TODO: Ignorio class."""
+    """Ignorio handles API requests from gitignore.io.
 
-    def __init__(self):
-        """TODO: Ignorio initialization."""
+    supported_languages():
+        Return a list of supported languages.
 
-    def supported_languages(self):
+    count_languages():
+        Return a Integer of the number of languages supported.
+
+    is_lang_supported(lang):
+        Return True or False if a language is supported.
+
+    get_language_exclusion(langs):
+        Return a list with the exclusions templates.
+
+    write_gitignore():
+        Writes a template to the disk with the exlusion languages.
+    """
+
+    @staticmethod
+    def supported_languages():
         """Get supported languages from gitignore.io.
 
         example:
