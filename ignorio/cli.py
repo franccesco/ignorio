@@ -38,6 +38,7 @@ def main(lang, output, append, verbose, langs):
         faulty_lang = lang_error.args[0]
         err_msg = click.style(f'Language not supported:', bold=True, fg='red')
         print(err_msg, faulty_lang)
+        exit(1)
     else:
         if verbose:
             # languages written
