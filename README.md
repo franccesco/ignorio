@@ -1,8 +1,7 @@
 # Ignorio
-*Manage your .gitignore with ease!*
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/ignorio.svg) ![PyPI](https://img.shields.io/pypi/v/ignorio.svg) [![Build Status](https://travis-ci.org/franccesco/ignorio.svg?branch=master)](https://travis-ci.org/franccesco/ignorio) [![Coverage Status](https://coveralls.io/repos/github/franccesco/ignorio/badge.svg?branch=master)](https://coveralls.io/github/franccesco/ignorio?branch=master) ![GitHub](https://img.shields.io/github/license/franccesco/ignorio.svg) [![Twitter](https://img.shields.io/twitter/url/https/github.com/franccesco/ignorio.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Ffranccesco%2Fignorio)
 
-
-**Ignorio** is a simple package to manage your [git exclusions](https://git-scm.com/docs/gitignore). This command line application helps you to download a template from [gitignore.io](http://gitignore.io/) without going to the site using the site's [API](https://www.gitignore.io/api/)
+**Ignorio** is a simple package to manage your [git exclusions](https://git-scm.com/docs/gitignore). This command line application helps you to download a template from [gitignore.io](http://gitignore.io/) without going to the site using the site's [API](https://www.gitignore.io/api/) 
 
 # Usage
 
