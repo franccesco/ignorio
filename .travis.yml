@@ -8,7 +8,7 @@ install:
 script:
 - poetry run coverage run -m pytest
 after_success:
-- poetry run ig ruby python sublime -v -o exclusion_template.out
+- poetry run ig ruby python sublimetext -v -o exclusion_template.out
 after_script:
 - poetry run coveralls
 before_deploy:
