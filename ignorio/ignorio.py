@@ -35,13 +35,24 @@ class Ignorio():
         return True if lang in lang_list else False
 
     def get_language_exclusion(self, langs):
-        """Get languages exclusion list."""
+        """Get languages exclusion list.
+
+        languages must be in format 'lang1,lang2,lang3' for the API to work.
+        """
+        # if language is not supported, raise a Value error.
+        for lang in langs:
+            if not self.is_lang_supported(lang):
+                raise ValueError(lang)
+
         lang_list = ','.join(langs)
         exclusion_list = rget(f'https://www.gitignore.io/api/{lang_list}').text
         return exclusion_list
 
-    def write_gitignore(self, langs, filename='.gitignore'):
+    def write_gitignore(self, langs, filename='.gitignore', append=False):
         """Write .gitignore."""
+        mode = 'w'
+        if append:
+            mode = 'a'
         lang_list = self.get_language_exclusion(langs)
-        with open(filename, 'w') as raw:
+        with open(filename, mode) as raw:
             raw.write(lang_list)
