@@ -1,8 +1,12 @@
 [tool.poetry]
 name = "ignorio"
-version = "0.2.0"
-description = ""
-authors = ["Franccesco Orozco <franccesco.orozco@codingdose.info>"]
+version = "0.2.1"
+description = "Manage your .gitignore with ease!"
+authors = ["Franccesco Orozco <franccesco@codingdose.info>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/franccesco/ignorio"
+keywords = ["git", "gitignore", "exclusion", "vcs"]
 
 [tool.poetry.dependencies]
 python = "^3.4"
