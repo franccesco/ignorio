@@ -1,0 +1,31 @@
+language: python
+python:
+- '3.6'
+before_install:
+- pip install poetry
+install:
+- poetry install
+script:
+- poetry run coverage run -m pytest
+after_success:
+- poetry run ig ruby python sublime -v -o exclusion_template.out
+after_script:
+- poetry run coveralls
+before_deploy:
+- poetry build
+deploy:
+  skip_cleanup: true
+  provider: pypi
+  user: franccesco
+  on:
+    tags: true
+    branch: master
+  password:
+    secure: ph5T6ls0rX1UMs6Vyj7GtMsYgihUbpMdzpJqvXdVT1RNYYUQWS89AMuo/zEjGhnJIVSHxV3XFb5NfcqGeEGPmFk2W4rlBoxujdJbaxFsvBI8JP+HHxUVMAxayx7nZROSVn+iBZKG8M/XfWZUt7VD3hN66p3Pg7m94IoRcwCqm40KqItoXkuuBMrAV6bUVaQLEpKA7tTCMjeX8OATMkXux6jL4JhykOr2zZi5WCIobhIwHDbEzjF29FTNr/UJUDcSNpcjNe2KoxyxRmKONPzqlnLkTUI44OdUsgnpa2p36r441bafQ02y8t+zNdRm4WGcIieaaCjk0VsJGonhr563P/xsmSTzK0xsT2Sj2mZm5BQxlSMaBGH8HB/XCj7aJJ+rZgrzvL6ROLHXUaGn87n21e3q/2NgLFVBmdBlT0muf4wsCaRJWWV/+L/OQqPdzkbxBEdCSb9+F4JNwhPhZdB0MLT6hC99Ef/127izh69gYZYr/F8VgbXMXN+J8MXOEEDR0zORCJP2zt4E7nzkY6N1ZlUwytAbrwjIZkpQ0Z20wgDpVi9P00KKpqoJ8C0NTkScdXZviPJpfrggMnoxZ6Xp1VSETDZZi83vloPLvC0yxkU1C3UxPxOgYakiaF8dgXwUcDFwUUW4lW/uo/PuxcJKdT2sjl8XE3LhDIl4lOrtjXE=
+after_deploy:
+- deactivate
+- pip install ignorio
+- ignorio go -o go_exclusion.out -v
+notifications:
+  slack:
+    secure: nkv8sNCCr9bzSrStvFIZ3tpArKKLZbA977YHedtpHRMezyYTY2V/pTiTSj/5rDbpZbRUxT89enoqBOFiAyVkZql9gpOFaxT2v4i/09Tzy5NYg4owAbgDiQxf0V0I4wQFDIjqAHTj45bcNMghJ4durKNaILB+ui0nOZinQlgqBTaO1/JWQhR9hwd5zJTGd/IHPkNhCXkbthaW+UHv34wYAuZJ2iWKxVmVXLWksFWwfCxzOJ2z0h1d7b6mpyZzCugu9O1J2nNbBxXu8WDFTP854WLBfmyCJa5UPypN1kyOEZAD1jh5iiMDsrivS5aH0NeHkYKfdbfbFkihj5xQv7bIpKm+W8FgzBWQoCC8FzuVEz/wzz6IW5ylrfZFjyXTIaly+eIvURlHXREqt2mAsjSnw1eJEiTdWxuhjDsCphuYWQb73Pj0c9Idk+wYHRkyUByRbkHmoh0Daw8X2oGeMLUwM8Moiz1RmaEj3LMEBKWI5vqBQ1ne1ZR9uRis4DiQHhkyN6HFm00fhl4X4z/Yt5q2rxwDrTtt4f3wgsGRWW7q/F3y1PWoblsLOLqp89kIVW9irV0wy92h1v7vzFvPMajw/d4D01ZMEyEUx6K5yinalaRPy7SguJtaG6WhK+QVNeSht1/dt3WlJHX6ZeLEXHCqCvf0YfOB1K+A5xU/SY2bE64=
