@@ -9,12 +9,12 @@ IG = Ignorio()
 @click.command()
 @click.argument('lang', nargs=-1)
 @click.option('-l', '--langs', help='List supported languages', is_flag=True)
-@click.option('-o', '--output', help='Set destination', default='.gitignore')
+@click.option('-o', '--output', help='Set destination', default='.gitignore',
+              metavar='OUTPUT')
 @click.option('-a', '--append', help='Append instead of rewrite', is_flag=True)
-@click.option('-v', '--verbose', help='Set verbosity', is_flag=True)
+@click.option('-v', '--verbose', help='Verbose mode', is_flag=True)
 def main(lang, output, append, verbose, langs):
-    """TODO: CLI."""
-
+    """Download a version control exclusion list from gitignore.io."""
     if langs:
         # count total languages supported by gitignore.io
         lang_count = IG.count_languages()
@@ -30,7 +30,7 @@ def main(lang, output, append, verbose, langs):
 
     # if no language was given then complain, else, write report.
     if not lang:
-        click.secho('Type a language please.', bold=True, fg='yellow')
+        click.secho('Type a list of languages please.', bold=True, fg='yellow')
         exit()
     try:
         IG.write_gitignore(lang, output, append)
