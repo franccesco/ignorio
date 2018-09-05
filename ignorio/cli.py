@@ -61,7 +61,10 @@ def main(lang, output, append, verbose, langs):
                 color = 'yellow'
             click.secho(mode, fg=color, bold=True)
         else:
-            success_msg = 'Exclusions written successfully.'
+            if append:
+                success_msg = 'Exclusions appended successfully.'
+            else:
+                success_msg = 'Exclusions written successfully.'
             click.secho(success_msg, bold=True, fg='green')
 
 
